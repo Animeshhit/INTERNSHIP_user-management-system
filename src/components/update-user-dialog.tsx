@@ -98,6 +98,7 @@ export function UpdateUserDialog({
                 Avatar URL
               </Label>
               <Input
+                disabled={true}
                 id="avatar"
                 name="avatar"
                 value={formData.avatar}

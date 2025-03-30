@@ -182,7 +182,7 @@ export default function UserList() {
                           <span className="sr-only">Edit user {user.id}</span>
                         </Button>
                         <Button
-                          disabled={isDeleting}
+                          disabled={isDeleting && user.id == userToDelete}
                           variant="destructive"
                           className="cursor-pointer flex items-center justify-center"
                           size="icon"
@@ -247,13 +247,22 @@ export default function UserList() {
                       <span className="sr-only">Edit user {user.id}</span>
                     </Button>
                     <Button
+                      disabled={isDeleting && user.id == userToDelete}
                       variant="destructive"
                       size="sm"
                       className="h-8 w-8 p-0"
                       onClick={() => handleDeleteClick(user.id)}
                     >
-                      <Trash2 className="h-4 w-4" />
-                      <span className="sr-only">Delete user {user.id}</span>
+                      {isDeleting && user.id == userToDelete ? (
+                        <>
+                          <Loader2 className="  h-4 w-4 animate-spin" />
+                        </>
+                      ) : (
+                        <>
+                          <Trash2 className="h-4 w-4" />
+                          <span className="sr-only">Delete user {user.id}</span>
+                        </>
+                      )}
                     </Button>
                   </div>
                 </div>
